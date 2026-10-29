@@ -14,7 +14,93 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      report_requests: {
+        Row: {
+          birth_date: string
+          birth_time: string
+          created_at: string
+          deliver_after: string
+          email: string
+          id: string
+          latitude: number
+          longitude: number
+          place_name: string
+          report_type: string
+          status: string
+          tier: string
+          timezone: string
+        }
+        Insert: {
+          birth_date: string
+          birth_time: string
+          created_at?: string
+          deliver_after: string
+          email: string
+          id?: string
+          latitude: number
+          longitude: number
+          place_name: string
+          report_type: string
+          status?: string
+          tier?: string
+          timezone: string
+        }
+        Update: {
+          birth_date?: string
+          birth_time?: string
+          created_at?: string
+          deliver_after?: string
+          email?: string
+          id?: string
+          latitude?: number
+          longitude?: number
+          place_name?: string
+          report_type?: string
+          status?: string
+          tier?: string
+          timezone?: string
+        }
+        Relationships: []
+      }
+      saved_charts: {
+        Row: {
+          birth_date: string
+          birth_time: string
+          created_at: string
+          id: string
+          latitude: number
+          longitude: number
+          name: string
+          place_name: string
+          timezone: string
+          user_id: string
+        }
+        Insert: {
+          birth_date: string
+          birth_time: string
+          created_at?: string
+          id?: string
+          latitude: number
+          longitude: number
+          name: string
+          place_name: string
+          timezone: string
+          user_id: string
+        }
+        Update: {
+          birth_date?: string
+          birth_time?: string
+          created_at?: string
+          id?: string
+          latitude?: number
+          longitude?: number
+          name?: string
+          place_name?: string
+          timezone?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
