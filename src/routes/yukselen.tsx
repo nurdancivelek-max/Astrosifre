@@ -21,13 +21,12 @@ export const Route = createFileRoute("/yukselen")({
 
 function RisingPage() {
   const [data, setData] = useState<BirthData | null>(null);
-  const [hasTime, setHasTime] = useState(true);
 
   let result: { asc: number } | null = null;
   let timeline: ReturnType<typeof risingTimeline> = [];
   if (data) {
     const { latitude, longitude, timezone } = data.place;
-    if (hasTime) result = { asc: angles(localToUtc(data.date, data.time, timezone), latitude, longitude).asc };
+    if (data.time) result = { asc: angles(localToUtc(data.date, data.time, timezone), latitude, longitude).asc };
     timeline = risingTimeline(localToUtc(data.date, "00:00", timezone), latitude, longitude);
   }
 
@@ -36,7 +35,7 @@ function RisingPage() {
       <h1 className="font-display text-4xl font-bold">Yükseleni <span className="text-gold">Bul</span></h1>
       <p className="mt-2 text-muted-foreground">Doğum saatiniz belirsizse boş bırakın: o gün doğan tüm yükselenleri saat aralıklarıyla gösteririz.</p>
       <div className="mt-8 rounded-xl border border-border bg-card/70 p-6">
-        <BirthForm timeOptional onSubmit={(d) => { setHasTime(Boolean((document.getElementById("bf-time") as HTMLInputElement)?.value)); setData(d); }} />
+        <BirthForm timeOptional onSubmit={setData} />
       </div>
 
       {data && result && (

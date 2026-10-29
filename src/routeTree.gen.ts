@@ -10,13 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DogumHaritasiRouteImport } from './routes/dogum-haritasi'
 import { Route as HoraryRouteImport } from './routes/horary'
+import { Route as RaporlarRouteImport } from './routes/raporlar'
 import { Route as YukselenRouteImport } from './routes/yukselen'
+import { Route as AuthenticatedHaritalarimRouteImport } from './routes/_authenticated/haritalarim'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DogumHaritasiRoute = DogumHaritasiRouteImport.update({
@@ -29,43 +42,90 @@ const HoraryRoute = HoraryRouteImport.update({
   path: '/horary',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RaporlarRoute = RaporlarRouteImport.update({
+  id: '/raporlar',
+  path: '/raporlar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YukselenRoute = YukselenRouteImport.update({
   id: '/yukselen',
   path: '/yukselen',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedHaritalarimRoute =
+  AuthenticatedHaritalarimRouteImport.update({
+    id: '/haritalarim',
+    path: '/haritalarim',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
+  '/raporlar': typeof RaporlarRoute
   '/yukselen': typeof YukselenRoute
+  '/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
+  '/raporlar': typeof RaporlarRoute
   '/yukselen': typeof YukselenRoute
+  '/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
+  '/raporlar': typeof RaporlarRoute
   '/yukselen': typeof YukselenRoute
+  '/_authenticated/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/dogum-haritasi'
+    | '/horary'
+    | '/raporlar'
+    | '/yukselen'
+    | '/haritalarim'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
-  id: '__root__' | '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
+  to:
+    | '/'
+    | '/auth'
+    | '/dogum-haritasi'
+    | '/horary'
+    | '/raporlar'
+    | '/yukselen'
+    | '/haritalarim'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/dogum-haritasi'
+    | '/horary'
+    | '/raporlar'
+    | '/yukselen'
+    | '/_authenticated/haritalarim'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   DogumHaritasiRoute: typeof DogumHaritasiRoute
   HoraryRoute: typeof HoraryRoute
+  RaporlarRoute: typeof RaporlarRoute
   YukselenRoute: typeof YukselenRoute
 }
 
@@ -76,6 +136,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dogum-haritasi': {
@@ -92,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HoraryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/raporlar': {
+      id: '/raporlar'
+      path: '/raporlar'
+      fullPath: '/raporlar'
+      preLoaderRoute: typeof RaporlarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yukselen': {
       id: '/yukselen'
       path: '/yukselen'
@@ -99,13 +180,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof YukselenRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/haritalarim': {
+      id: '/_authenticated/haritalarim'
+      path: '/haritalarim'
+      fullPath: '/haritalarim'
+      preLoaderRoute: typeof AuthenticatedHaritalarimRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedHaritalarimRoute: typeof AuthenticatedHaritalarimRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedHaritalarimRoute: AuthenticatedHaritalarimRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   DogumHaritasiRoute: DogumHaritasiRoute,
   HoraryRoute: HoraryRoute,
+  RaporlarRoute: RaporlarRoute,
   YukselenRoute: YukselenRoute,
 }
 export const routeTree = rootRouteImport

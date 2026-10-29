@@ -29,7 +29,7 @@ export function BirthForm({
         e.preventDefault();
         if (!date || !place || (!timeOptional && !time)) return setErr("Lütfen tüm alanları doldurun ve listeden bir şehir seçin.");
         setErr("");
-        onSubmit({ name: name || undefined, date, time: time || "12:00", place });
+        onSubmit({ name: name || undefined, date, time: time || (timeOptional ? "" : "12:00"), place });
       }}
     >
       {askName && (
