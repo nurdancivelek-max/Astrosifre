@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DogumHaritasiRouteImport } from './routes/dogum-haritasi'
+import { Route as HoraryRouteImport } from './routes/horary'
+import { Route as YukselenRouteImport } from './routes/yukselen'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DogumHaritasiRoute = DogumHaritasiRouteImport.update({
+  id: '/dogum-haritasi',
+  path: '/dogum-haritasi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoraryRoute = HoraryRouteImport.update({
+  id: '/horary',
+  path: '/horary',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const YukselenRoute = YukselenRouteImport.update({
+  id: '/yukselen',
+  path: '/yukselen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dogum-haritasi': typeof DogumHaritasiRoute
+  '/horary': typeof HoraryRoute
+  '/yukselen': typeof YukselenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dogum-haritasi': typeof DogumHaritasiRoute
+  '/horary': typeof HoraryRoute
+  '/yukselen': typeof YukselenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dogum-haritasi': typeof DogumHaritasiRoute
+  '/horary': typeof HoraryRoute
+  '/yukselen': typeof YukselenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
+  id: '__root__' | '/' | '/dogum-haritasi' | '/horary' | '/yukselen'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DogumHaritasiRoute: typeof DogumHaritasiRoute
+  HoraryRoute: typeof HoraryRoute
+  YukselenRoute: typeof YukselenRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dogum-haritasi': {
+      id: '/dogum-haritasi'
+      path: '/dogum-haritasi'
+      fullPath: '/dogum-haritasi'
+      preLoaderRoute: typeof DogumHaritasiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/horary': {
+      id: '/horary'
+      path: '/horary'
+      fullPath: '/horary'
+      preLoaderRoute: typeof HoraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/yukselen': {
+      id: '/yukselen'
+      path: '/yukselen'
+      fullPath: '/yukselen'
+      preLoaderRoute: typeof YukselenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DogumHaritasiRoute: DogumHaritasiRoute,
+  HoraryRoute: HoraryRoute,
+  YukselenRoute: YukselenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
