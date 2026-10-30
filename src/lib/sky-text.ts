@@ -85,5 +85,5 @@ export function formatDuration(days: number, from: Date, timeZone: string) {
   const end = new Date(from.getTime() + days * 86400000);
   const label = days < 1 ? `yaklaşık ${Math.max(1, Math.round(days * 24))} saat` : days < 60 ? `yaklaşık ${Math.round(days)} gün` : `yaklaşık ${Math.round(days / 30)} ay`;
   const date = new Intl.DateTimeFormat("tr-TR", { timeZone, day: "numeric", month: "long", ...(days > 300 ? { year: "numeric" } : {}) }).format(end);
-  return `${label} etkili (${date}'e kadar)`;
+  return `${label} daha etkili · bitiş: ${date}`;
 }
