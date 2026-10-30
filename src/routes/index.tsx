@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SkyToday } from "@/components/SkyToday";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,18 +25,14 @@ const TOOLS = [
 function Index() {
   return (
     <div className="mx-auto max-w-6xl px-4">
-      <section className="py-20 text-center sm:py-28">
-        <p className="text-sm uppercase tracking-[0.3em] text-primary">Kayıt gerekmez</p>
-        <h1 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-6xl">
-          Gökyüzünün <span className="text-gold">şifresini</span> kendiniz çözün
-        </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">
-          Başka sitelerde bulamayacağınız hesaplamalar: saat bilinmeden yükselen penceresi, klasik horary analizi ve hassas doğum haritası.
+      <SkyToday />
+      <section className="py-12 text-center">
+        <h2 className="mx-auto max-w-3xl font-display text-3xl font-bold leading-tight sm:text-4xl">
+          Bu gökyüzü <span className="text-gold">sizi</span> nasıl etkiliyor?
+        </h2>
+        <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
+          Kayıt gerekmez: saat bilinmeden yükselen penceresi, klasik horary analizi ve hassas doğum haritası.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/yukselen" className="rounded-md bg-gold px-6 py-3 font-semibold text-primary-foreground shadow-glow">Yükselenimi bul</Link>
-          <Link to="/horary" className="rounded-md border border-primary/50 px-6 py-3 font-semibold text-primary">Bir soru sor</Link>
-        </div>
       </section>
       <section className="grid gap-5 sm:grid-cols-2">
         {TOOLS.map((t) => (
