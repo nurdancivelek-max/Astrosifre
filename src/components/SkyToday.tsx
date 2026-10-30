@@ -3,7 +3,7 @@ import { ChartWheel } from "@/components/ChartWheel";
 import { PlaceSearch } from "@/components/PlaceSearch";
 import { computeChart, formatDeg, moonVoidOfCourse, PLANETS, signOf, type Chart } from "@/lib/astro";
 import { formatInZone, type Place } from "@/lib/geo";
-import { ASPECT_TONE, aspectSentence, aspectStrength, PLANET_THEME } from "@/lib/sky-text";
+import { ASPECT_TONE, aspectAdvice, aspectRemainingDays, aspectSentence, aspectStrength, formatDuration, PLANET_THEME } from "@/lib/sky-text";
 
 const ISTANBUL: Place = { name: "İstanbul", latitude: 41.0082, longitude: 28.9784, timezone: "Europe/Istanbul" };
 const nameOf = (k: string) => PLANETS.find((p) => p.key === k)!;
@@ -27,6 +27,7 @@ export function SkyToday() {
 
   const sun = chart.planets.find((p) => p.key === "Sun")!;
   const moon = chart.planets.find((p) => p.key === "Moon")!;
+  const spd = (k: string) => chart.planets.find((p) => p.key === k)?.speed ?? 0;
   const retros = chart.planets.filter((p) => p.retro);
   const asc = signOf(chart.angles.asc);
   const top = chart.aspects.filter((a) => a.applying)[0] ?? chart.aspects[0];
@@ -42,7 +43,7 @@ export function SkyToday() {
           <h1 className="mt-2 font-display text-3xl font-bold sm:text-5xl">
             Şu an <span className="text-gold">gökyüzünde</span> neler var?
           </h1>
-          <p className="mt-2 text-muted-foreground">{formatInZone(now, place.timezone)} · {place.name}</p>
+          <p className="mt-2 text-muted-foreground">{new Intl.DateTimeFormat("tr-TR", { timeZone: place.timezone, weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(now)} · {formatInZone(now, place.timezone)} · {place.name}</p>
         </div>
         <div className="w-full sm:w-72">
           <PlaceSearch value={place} onChange={setPlace} />
@@ -55,6 +56,7 @@ export function SkyToday() {
           Gökyüzünde {harmonious} uyumlu, {tense} zorlayıcı açı var; günün genel tonu <b>{mood}</b>.
           {top && <> Öne çıkan açı: <b>{nameOf(top.a).name} {top.type.name.toLowerCase()} {nameOf(top.b).name}</b> — {aspectSentence(top)}</>}
         </p>
+        {top && <Advice text={aspectAdvice(top)} duration={formatDuration(aspectRemainingDays(top, spd(top.a), spd(top.b)), now, place.timezone)} />}
       </div>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
@@ -103,6 +105,7 @@ export function SkyToday() {
                   </span>
                 </div>
                 <p className="mt-1 text-sm text-muted-foreground">{aspectSentence(a)}</p>
+                <Advice text={aspectAdvice(a)} duration={formatDuration(aspectRemainingDays(a, spd(a.a), spd(a.b)), now, place.timezone)} />
               </div>
             );
           })}
@@ -121,6 +124,15 @@ function Stat({ label, value, sub }: { label: string; value: string; sub: string
       <p className="text-xs uppercase tracking-wider text-muted-foreground">{label}</p>
       <p className="mt-1 font-display text-lg font-semibold text-gold">{value}</p>
       <p className="text-xs text-muted-foreground">{sub}</p>
+    </div>
+  );
+}
+
+function Advice({ text, duration }: { text: string; duration: string }) {
+  return (
+    <div className="mt-2 rounded-md bg-advice px-3 py-2 text-sm text-advice-foreground">
+      <p><b>Günün enerjisi:</b> {text}</p>
+      <p className="mt-0.5 text-xs opacity-80">⏳ {duration}</p>
     </div>
   );
 }
