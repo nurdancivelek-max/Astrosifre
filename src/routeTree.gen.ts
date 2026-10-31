@@ -15,6 +15,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as DogumHaritasiRouteImport } from './routes/dogum-haritasi'
 import { Route as HoraryRouteImport } from './routes/horary'
 import { Route as RaporlarRouteImport } from './routes/raporlar'
+import { Route as RuhEsimRouteImport } from './routes/ruh-esim'
 import { Route as YukselenRouteImport } from './routes/yukselen'
 import { Route as AuthenticatedHaritalarimRouteImport } from './routes/_authenticated/haritalarim'
 
@@ -47,6 +48,11 @@ const RaporlarRoute = RaporlarRouteImport.update({
   path: '/raporlar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RuhEsimRoute = RuhEsimRouteImport.update({
+  id: '/ruh-esim',
+  path: '/ruh-esim',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const YukselenRoute = YukselenRouteImport.update({
   id: '/yukselen',
   path: '/yukselen',
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
+  '/ruh-esim': typeof RuhEsimRoute
   '/yukselen': typeof YukselenRoute
   '/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
+  '/ruh-esim': typeof RuhEsimRoute
   '/yukselen': typeof YukselenRoute
   '/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
+  '/ruh-esim': typeof RuhEsimRoute
   '/yukselen': typeof YukselenRoute
   '/_authenticated/haritalarim': typeof AuthenticatedHaritalarimRoute
 }
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
+    | '/ruh-esim'
     | '/yukselen'
     | '/haritalarim'
   fileRoutesByTo: FileRoutesByTo
@@ -105,6 +115,7 @@ export interface FileRouteTypes {
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
+    | '/ruh-esim'
     | '/yukselen'
     | '/haritalarim'
   id:
@@ -115,6 +126,7 @@ export interface FileRouteTypes {
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
+    | '/ruh-esim'
     | '/yukselen'
     | '/_authenticated/haritalarim'
   fileRoutesById: FileRoutesById
@@ -126,6 +138,7 @@ export interface RootRouteChildren {
   DogumHaritasiRoute: typeof DogumHaritasiRoute
   HoraryRoute: typeof HoraryRoute
   RaporlarRoute: typeof RaporlarRoute
+  RuhEsimRoute: typeof RuhEsimRoute
   YukselenRoute: typeof YukselenRoute
 }
 
@@ -173,6 +186,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RaporlarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ruh-esim': {
+      id: '/ruh-esim'
+      path: '/ruh-esim'
+      fullPath: '/ruh-esim'
+      preLoaderRoute: typeof RuhEsimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/yukselen': {
       id: '/yukselen'
       path: '/yukselen'
@@ -208,6 +228,7 @@ const rootRouteChildren: RootRouteChildren = {
   DogumHaritasiRoute: DogumHaritasiRoute,
   HoraryRoute: HoraryRoute,
   RaporlarRoute: RaporlarRoute,
+  RuhEsimRoute: RuhEsimRoute,
   YukselenRoute: YukselenRoute,
 }
 export const routeTree = rootRouteImport
