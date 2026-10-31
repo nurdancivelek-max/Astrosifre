@@ -70,6 +70,8 @@ function SoulmatePage() {
           </section>
         </>
       )}
+
+      <SoulmatePool />
     </div>
   );
 }
