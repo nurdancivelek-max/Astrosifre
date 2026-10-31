@@ -95,6 +95,7 @@ const NAV = [
   { to: "/yukselen", label: "Yükselen" },
   { to: "/dogum-haritasi", label: "Doğum Haritası" },
   { to: "/horary", label: "Horary" },
+  { to: "/ruh-esim", label: "Ruh Eşim" },
   { to: "/raporlar", label: "Raporlar" },
 ] as const;
 
