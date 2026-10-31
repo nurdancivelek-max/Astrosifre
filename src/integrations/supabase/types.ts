@@ -101,6 +101,54 @@ export type Database = {
         }
         Relationships: []
       }
+      soulmate_profiles: {
+        Row: {
+          birth_date: string
+          birth_time: string | null
+          created_at: string
+          latitude: number
+          longitude: number
+          moon_sign: number
+          nickname: string
+          place_name: string
+          rising_sign: number | null
+          sun_sign: number
+          timezone: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          birth_date: string
+          birth_time?: string | null
+          created_at?: string
+          latitude: number
+          longitude: number
+          moon_sign: number
+          nickname: string
+          place_name: string
+          rising_sign?: number | null
+          sun_sign: number
+          timezone: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          birth_date?: string
+          birth_time?: string | null
+          created_at?: string
+          latitude?: number
+          longitude?: number
+          moon_sign?: number
+          nickname?: string
+          place_name?: string
+          rising_sign?: number | null
+          sun_sign?: number
+          timezone?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

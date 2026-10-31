@@ -7,5 +7,6 @@
 - [ ] Rapor e-postalarını gönderme — blocked: needs user's own email domain
 - [ ] Ücretli anlık raporlar (tek seferlik ödeme) — blocked: payments need Pro plan
 - [x] Ruh Eşim sinastri aracı
-- [ ] Ruh eşi havuzu (üyeler arası eşleşme)
+- [x] Ruh eşi havuzu (üyeler arası eşleşme)
+- [ ] Kozmik Selam (eşleşen üyeler arası karşılıklı iletişim)
 - [ ] Burç sohbet odaları
