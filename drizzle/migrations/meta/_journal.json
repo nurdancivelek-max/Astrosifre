@@ -8,6 +8,13 @@
       "when": 1793312243577,
       "tag": "0000_astrosifre_core",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793435334523,
+      "tag": "0001_soulmate_pool",
+      "breakpoints": true
     }
   ]
 }
