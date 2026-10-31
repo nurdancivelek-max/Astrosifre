@@ -4,6 +4,7 @@ import { BirthForm, type BirthData } from "@/components/BirthForm";
 import { computeChart, signOf } from "@/lib/astro";
 import { localToUtc } from "@/lib/geo";
 import { compatibilityScore, crossAspects, crossText } from "@/lib/synastry";
+import { SoulmatePool } from "@/components/SoulmatePool";
 
 export const Route = createFileRoute("/ruh-esim")({
   head: () => ({
