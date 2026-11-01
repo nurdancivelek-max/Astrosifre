@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       report_requests: {
         Row: {
+          analyst_code: string
           birth_date: string
           birth_time: string
           created_at: string
@@ -31,6 +32,7 @@ export type Database = {
           timezone: string
         }
         Insert: {
+          analyst_code?: string
           birth_date: string
           birth_time: string
           created_at?: string
@@ -46,6 +48,7 @@ export type Database = {
           timezone: string
         }
         Update: {
+          analyst_code?: string
           birth_date?: string
           birth_time?: string
           created_at?: string

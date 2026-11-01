@@ -15,6 +15,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { MobileNavigation } from "@/components/MobileNavigation";
 
 function NotFoundComponent() {
   return (
@@ -103,18 +104,18 @@ function Header() {
   const { user } = useAuth();
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <Link to="/" className="font-display text-xl font-bold text-gold">✦ Astrosifre</Link>
-        <nav className="flex flex-wrap items-center gap-1 text-sm">
+      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 md:flex-row md:items-center md:justify-between md:gap-4">
+        <Link to="/" className="shrink-0 font-display text-xl font-bold text-gold">✦ Astrosifre</Link>
+        <nav aria-label="Ana menü" className="flex w-full items-center gap-1 overflow-x-auto text-sm md:w-auto md:flex-wrap">
           {NAV.map((n) => (
-            <Link key={n.to} to={n.to} className="rounded-md px-3 py-1.5 text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
+            <Link key={n.to} to={n.to} className="shrink-0 rounded-md px-3 py-1.5 text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
               {n.label}
             </Link>
           ))}
           {user ? (
-            <Link to="/haritalarim" className="rounded-md border border-primary/40 px-3 py-1.5 text-primary">Haritalarım</Link>
+             <Link to="/haritalarim" className="hidden rounded-md border border-primary/40 px-3 py-1.5 text-primary md:inline-flex">Haritalarım</Link>
           ) : (
-            <Link to="/auth" className="rounded-md border border-primary/40 px-3 py-1.5 text-primary">Giriş</Link>
+            <Link to="/auth" className="hidden rounded-md border border-primary/40 px-3 py-1.5 text-primary md:inline-flex">Giriş</Link>
           )}
         </nav>
       </div>
@@ -136,7 +137,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-sky">
+      <div className="mobile-page min-h-screen bg-sky">
         <Header />
         <main>
           <Outlet />
@@ -144,6 +145,7 @@ function RootComponent() {
         <footer className="mt-24 border-t border-border py-8 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Astrosifre · Hesaplamalar eğlence ve kişisel keşif amaçlıdır.
         </footer>
+        <MobileNavigation />
       </div>
       <Toaster />
     </QueryClientProvider>

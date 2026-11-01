@@ -8,3 +8,6 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep mobile navigation in the shared root layout with safe-area spacing so every page remains reachable without hiding its content.
+- Validate analysis code names in a shared browser-safe module and persist the selected code with report requests; code names are styles, not claims of human review.
