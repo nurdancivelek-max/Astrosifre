@@ -19,7 +19,7 @@ const TOOLS = [
   { to: "/yukselen", title: "Yükseleni Bul", text: "Doğum saatinizi bilmiyor musunuz? Gün boyunca hangi yükselenin hangi saatlerde doğduğunu görün.", glyph: "↑" },
   { to: "/horary", title: "Horary · Soru Astrolojisi", text: "Sorunuzu sorduğunuz anın haritası, klasik kurallarla yorumlanır: uygulayan açılar, boşta Ay, uyarılar.", glyph: "?" },
   { to: "/dogum-haritasi", title: "Doğum Haritası", text: "Placidus evleri, gezegen konumları, retrolar ve açılar — tek ekranda, ücretsiz.", glyph: "☉" },
-  { to: "/raporlar", title: "Kişisel Raporlar", text: "Ücretsiz raporlar sıraya alınıp e-postayla gelir; ücretli raporlar anında teslim edilir.", glyph: "✉" },
+  { to: "/raporlar", title: "Kişisel Raporlar", text: "Ücretsiz raporlar sıraya alınıp e-postayla gelir; premium raporlar çok yakında.", glyph: "✉" },
 ] as const;
 
 function Index() {

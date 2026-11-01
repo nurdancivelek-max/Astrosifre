@@ -15,9 +15,9 @@ export const Route = createFileRoute("/raporlar")({
   head: () => ({
     meta: [
       { title: "Kişisel Astroloji Raporları — Astrosifre" },
-      { name: "description", content: "Ücretsiz raporlar e-postayla sıraya alınarak teslim edilir; ücretli raporlar anında hazır." },
+      { name: "description", content: "Ücretsiz raporlar e-postayla sıraya alınarak teslim edilir; premium raporlar çok yakında." },
       { property: "og:title", content: "Kişisel Astroloji Raporları — Astrosifre" },
-      { property: "og:description", content: "Ücretsiz ya da anında teslim edilen detaylı raporlar." },
+      { property: "og:description", content: "Ücretsiz astroloji raporları; premium analizler çok yakında." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -36,7 +36,7 @@ function ReportsPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <h1 className="font-display text-4xl font-bold">Kişisel <span className="text-gold">Raporlar</span></h1>
-      <p className="mt-2 text-muted-foreground">Ücretsiz raporlar sıraya alınır ve e-postanıza gelir. Ücretli raporlar beklemeden, anında teslim edilir.</p>
+      <p className="mt-2 text-muted-foreground">Ücretsiz raporlar sıraya alınır ve e-postanıza gelir. Premium raporlar çok yakında.</p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {REPORTS.map((r) => (
@@ -46,11 +46,11 @@ function ReportsPage() {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <h2 className="font-display text-lg font-semibold">{r.title}</h2>
               <span className={`rounded-full px-2 py-0.5 text-xs ${r.tier === "free" ? "bg-secondary" : "bg-gold text-primary-foreground"}`}>
-                {r.tier === "free" ? "Ücretsiz" : "Tek seferlik ödeme"}
+                {r.tier === "free" ? "Ücretsiz" : "Premium · Çok Yakında"}
               </span>
             </div>
             <p className="mt-2 text-sm text-muted-foreground">{r.text}</p>
-            <p className="mt-3 text-xs text-primary">{r.tier === "free" ? `Teslim: ${r.delayHours === 48 ? "48 saat içinde" : "1 hafta içinde"}` : "Teslim: anında"}</p>
+            <p className="mt-3 text-xs text-primary">{r.tier === "free" ? `Teslim: ${r.delayHours === 48 ? "48 saat içinde" : "1 hafta içinde"}` : "Çok yakında erişime açılacak"}</p>
           </Button>
         ))}
       </div>
@@ -59,7 +59,9 @@ function ReportsPage() {
         {sel.tier === "paid" ? (
           <div className="text-center">
             <h3 className="font-display text-xl font-semibold">{sel.title}</h3>
-            <p className="mt-2 text-muted-foreground">Ödeme sistemi çok yakında açılıyor. Bu süreçte ücretsiz raporları talep edebilirsiniz.</p>
+            <span className="mt-3 inline-block rounded-full bg-gold px-3 py-1 text-xs text-primary-foreground">Premium · Çok Yakında</span>
+            <p className="mt-3 text-muted-foreground">Bu analiz çok yakında erişime açılacak. Şimdilik ücretsiz raporları talep ederek sıraya katılabilirsiniz.</p>
+            <Button type="button" className="mt-4" onClick={() => setSelected("natal-ozet")}>Ücretsiz rapor talep et</Button>
           </div>
         ) : done ? (
           <div className="text-center">
