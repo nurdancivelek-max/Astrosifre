@@ -1,4 +1,7 @@
 # Astrosifre roadmap
+- [ ] Telefon alt menüsü ve mobil gezinme
+- [ ] Raporlarda Altair / Vega / Sirius seçimi ve kaydı
+- [ ] Ödeme kurulumu — işletmenin ülkesi ve sağlayıcı onayı bekleniyor
 - [x] Yükseleni bul (saat bilinmeden pencere listesi)
 - [x] Horary
 - [x] Doğum haritası + kaydetme
