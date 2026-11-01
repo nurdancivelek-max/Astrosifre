@@ -1,14 +1,14 @@
 # Astrosifre roadmap
-- [ ] Telefon alt menüsü ve mobil gezinme
-- [ ] Raporlarda Altair / Vega / Sirius seçimi ve kaydı
-- [ ] Ödeme kurulumu — işletmenin ülkesi ve sağlayıcı onayı bekleniyor
+- [x] Telefon alt menüsü ve mobil gezinme (telefon / bilgisayar kontrol edildi)
+- [x] Raporlarda Altair / Vega / Sirius seçimi ve kaydı (gerçek talep akışı kontrol edildi)
+- [ ] Ödeme kurulumu — Türkiye ve ürün için hazır sağlayıcı uygun değil; yerel hizmet seçimi ve hesap bağlantısı gerekiyor
 - [x] Yükseleni bul (saat bilinmeden pencere listesi)
 - [x] Horary
 - [x] Doğum haritası + kaydetme
 - [x] Opsiyonel hesap (e-posta + Google), Haritalarım
 - [x] Ücretsiz rapor talebi ve sıra (48 saat / 1 hafta)
 - [ ] Rapor e-postalarını gönderme — blocked: needs user's own email domain
-- [ ] Ücretli anlık raporlar (tek seferlik ödeme) — blocked: payments need Pro plan
+- [ ] Ücretli anlık raporlar (tek seferlik ödeme) — ödeme sağlayıcısı bağlantısı gerekiyor
 - [x] Ruh Eşim sinastri aracı
 - [x] Ruh eşi havuzu (üyeler arası eşleşme)
 - [ ] Kozmik Selam (eşleşen üyeler arası karşılıklı iletişim)

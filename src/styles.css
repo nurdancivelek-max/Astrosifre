@@ -122,6 +122,11 @@
 @utility bg-sky { background-image: var(--gradient-sky); }
 @utility bg-gold { background-image: var(--gradient-gold); }
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
+@media (max-width: 767px) {
+  .mobile-page { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+  .mobile-navigation { padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)); }
+  input, select, textarea { font-size: 16px; }
+}
 @utility text-gold {
   background-image: var(--gradient-gold);
   -webkit-background-clip: text;

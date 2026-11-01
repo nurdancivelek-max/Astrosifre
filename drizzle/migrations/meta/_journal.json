@@ -15,6 +15,13 @@
       "when": 1793435334523,
       "tag": "0001_soulmate_pool",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793509369471,
+      "tag": "0002_report_analysis_code",
+      "breakpoints": true
     }
   ]
 }
