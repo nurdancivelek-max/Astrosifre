@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { REPORTS, type ReportId } from "@/lib/report-rules";
 import { requestFreeReport } from "@/lib/reports.functions";
 import { DeskSelector } from "@/components/DeskSelector";
-import { Button } from "@/components/ui/button";
+import { InviteCard } from "@/components/InviteCard";
 import type { AnalystCode } from "@/lib/analysis-desks";
 
 export const Route = createFileRoute("/raporlar")({
