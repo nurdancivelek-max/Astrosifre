@@ -11,3 +11,4 @@
 
 - Keep mobile navigation in the shared root layout with safe-area spacing so every page remains reachable without hiding its content.
 - Validate analysis code names in a shared browser-safe module and persist the selected code with report requests; code names are styles, not claims of human review.
+- Referral credit is granted server-side only for email-confirmed accounts under 7 days old; referral tables are service-role only so users cannot inflate counts.

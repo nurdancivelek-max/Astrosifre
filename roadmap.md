@@ -13,3 +13,6 @@
 - [x] Ruh eşi havuzu (üyeler arası eşleşme)
 - [ ] Kozmik Selam (eşleşen üyeler arası karşılıklı iletişim)
 - [ ] Burç sohbet odaları
+- [x] Raporlar 2 adımlı akış (rapor seç → analiz masası)
+- [x] 3 arkadaş davet et → premium erken erişim (sayaç + link)
+- [ ] Erken erişimi kazananlara premium raporun teslimi — premium rapor içeriği hazır olunca

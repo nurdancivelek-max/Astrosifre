@@ -16,6 +16,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { MobileNavigation } from "@/components/MobileNavigation";
+import { useReferralCapture } from "@/hooks/useReferralCapture";
 
 function NotFoundComponent() {
   return (
@@ -134,6 +135,7 @@ function RootComponent() {
     });
     return () => data.subscription.unsubscribe();
   }, [router, queryClient]);
+  useReferralCapture();
 
   return (
     <QueryClientProvider client={queryClient}>
