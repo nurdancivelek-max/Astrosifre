@@ -116,6 +116,32 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Mistik altın yıldız tozu + nebula buğusu */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, oklch(0.62 0.1 80 / 70%), transparent 60%),
+      radial-gradient(1px 1px at 28% 42%, oklch(0.62 0.1 80 / 55%), transparent 60%),
+      radial-gradient(2px 2px at 46% 12%, oklch(0.68 0.11 85 / 65%), transparent 60%),
+      radial-gradient(1px 1px at 63% 33%, oklch(0.62 0.1 80 / 50%), transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 22%, oklch(0.68 0.11 85 / 60%), transparent 60%),
+      radial-gradient(1px 1px at 92% 58%, oklch(0.62 0.1 80 / 50%), transparent 60%),
+      radial-gradient(2px 2px at 7% 71%, oklch(0.68 0.11 85 / 55%), transparent 60%),
+      radial-gradient(1px 1px at 36% 84%, oklch(0.62 0.1 80 / 50%), transparent 60%),
+      radial-gradient(1.5px 1.5px at 57% 66%, oklch(0.68 0.11 85 / 55%), transparent 60%),
+      radial-gradient(1px 1px at 74% 88%, oklch(0.62 0.1 80 / 45%), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 85% 10%, oklch(0.88 0.06 75 / 45%), transparent 70%),
+      radial-gradient(ellipse 50% 35% at 10% 55%, oklch(0.9 0.05 60 / 40%), transparent 70%),
+      radial-gradient(ellipse 70% 40% at 60% 100%, oklch(0.9 0.05 85 / 45%), transparent 70%);
+    background-size: 340px 340px, 260px 260px, 420px 420px, 300px 300px, 380px 380px, 280px 280px, 360px 360px, 320px 320px, 400px 400px, 290px 290px, 100% 100%, 100% 100%, 100% 100%;
   }
 }
 

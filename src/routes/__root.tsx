@@ -105,9 +105,9 @@ function Header() {
   const { user } = useAuth();
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-3 md:flex-row md:items-center md:justify-between md:gap-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3 md:justify-between md:gap-4">
         <Link to="/" className="shrink-0 font-display text-xl font-bold text-gold">✦ Astrosifre</Link>
-        <nav aria-label="Ana menü" className="flex w-full items-center gap-1 overflow-x-auto text-sm md:w-auto md:flex-wrap">
+        <nav aria-label="Ana menü" className="hidden items-center gap-1 text-sm md:flex md:flex-wrap">
           {NAV.map((n) => (
             <Link key={n.to} to={n.to} className="shrink-0 rounded-md px-3 py-1.5 text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
               {n.label}
