@@ -21,15 +21,16 @@ export function BirthForm({
   const [time, setTime] = useState(initial?.time ?? "");
   const [place, setPlace] = useState<Place | null>(initial?.place ?? null);
   const [err, setErr] = useState("");
+  const [unknown, setUnknown] = useState(false);
 
   return (
     <form
       className="grid gap-4 sm:grid-cols-2"
       onSubmit={(e) => {
         e.preventDefault();
-        if (!date || !place || (!timeOptional && !time)) return setErr("Lütfen tüm alanları doldurun ve listeden bir şehir seçin.");
+        if (!date || !place || (!timeOptional && !unknown && !time)) return setErr("Lütfen tarih, şehir ve saati girin ya da “saatimi bilmiyorum” kutusunu işaretleyin.");
         setErr("");
-        onSubmit({ name: name || undefined, date, time: time || (timeOptional ? "" : "12:00"), place });
+        onSubmit({ name: name || undefined, date, time: unknown ? (timeOptional ? "" : "12:00") : time || (timeOptional ? "" : "12:00"), place });
       }}
     >
       {askName && (
@@ -43,8 +44,12 @@ export function BirthForm({
         <Input id="bf-date" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
       </div>
       <div className="grid gap-1.5">
-        <Label htmlFor="bf-time">Doğum saati {timeOptional && <span className="text-muted-foreground">(bilmiyorsanız boş bırakın)</span>}</Label>
-        <Input id="bf-time" type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+        <Label htmlFor="bf-time">Doğum saati</Label>
+        <Input id="bf-time" type="time" value={unknown ? "12:00" : time} disabled={unknown} onChange={(e) => setTime(e.target.value)} />
+        <label className="flex items-center gap-2 text-sm text-muted-foreground">
+          <input type="checkbox" checked={unknown} onChange={(e) => setUnknown(e.target.checked)} className="h-4 w-4 accent-primary" />
+          Doğum saatimi bilmiyorum (12:00 alınır)
+        </label>
       </div>
       <div className="grid gap-1.5 sm:col-span-2">
         <Label>Doğum yeri</Label>
