@@ -106,7 +106,21 @@ function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-center px-4 py-3 md:justify-between md:gap-4">
-        <Link to="/" className="shrink-0 font-display text-xl font-bold text-gold">✦ Astrosifre</Link>
+        <Link to="/" aria-label="Astrosifre ana sayfa" className="flex shrink-0 items-center gap-2.5">
+          <svg viewBox="0 0 48 48" className="h-10 w-10 text-primary" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <circle cx="24" cy="24" r="18.5" fill="none" stroke="currentColor" strokeWidth="0.6" strokeDasharray="1 2.2" />
+            <ellipse cx="24" cy="24" rx="15" ry="6" fill="none" stroke="currentColor" strokeWidth="0.8" transform="rotate(-20 24 24)" />
+            <path d="M20 13a11 11 0 1 0 0 22a8.5 8.5 0 1 1 0-22z" fill="currentColor" opacity="0.85" />
+            <path d="M30 14l1.3 3.7L35 19l-3.7 1.3L30 24l-1.3-3.7L25 19l3.7-1.3z" fill="currentColor" />
+            <circle cx="33" cy="31" r="1" fill="currentColor" />
+            <circle cx="14" cy="11" r="0.8" fill="currentColor" />
+          </svg>
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-xl font-bold tracking-[0.12em] text-gold">ASTROSIFRE</span>
+            <span className="mt-1 text-[9px] uppercase tracking-[0.35em] text-muted-foreground">Kozmik Rehber</span>
+          </span>
+        </Link>
         <nav aria-label="Ana menü" className="hidden items-center gap-1 text-sm md:flex md:flex-wrap">
           {NAV.map((n) => (
             <Link key={n.to} to={n.to} className="shrink-0 rounded-md px-3 py-1.5 text-muted-foreground hover:text-foreground" activeProps={{ className: "text-primary" }}>
@@ -139,7 +153,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="mobile-page min-h-screen bg-sky">
+      <div className="mobile-page min-h-screen">
         <Header />
         <main>
           <Outlet />
