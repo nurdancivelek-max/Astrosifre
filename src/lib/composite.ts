@@ -179,8 +179,6 @@ export interface CompositeChart {
  */
 function compositeArc(aSamples: number[], bSamples: number[], nominal: number) {
   let lo = 0, hi = 0, crossesOpp = false;
-  const nominalBranch = shortestArcMidpoint(aSamples[0], bSamples[0]);
-  void nominalBranch;
   for (const a of aSamples) for (const b of bSamples) {
     const m = shortestArcMidpoint(a, b);
     const d1 = signedDelta(m.lon, nominal);
