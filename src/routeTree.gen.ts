@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BizdenNeOlurRouteImport } from './routes/bizden-ne-olur'
 import { Route as DogumHaritasiRouteImport } from './routes/dogum-haritasi'
 import { Route as HoraryRouteImport } from './routes/horary'
 import { Route as RaporlarRouteImport } from './routes/raporlar'
@@ -31,6 +32,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BizdenNeOlurRoute = BizdenNeOlurRouteImport.update({
+  id: '/bizden-ne-olur',
+  path: '/bizden-ne-olur',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DogumHaritasiRoute = DogumHaritasiRouteImport.update({
@@ -68,6 +74,7 @@ const AuthenticatedHaritalarimRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bizden-ne-olur': typeof BizdenNeOlurRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/bizden-ne-olur': typeof BizdenNeOlurRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
@@ -90,6 +98,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/bizden-ne-olur': typeof BizdenNeOlurRoute
   '/dogum-haritasi': typeof DogumHaritasiRoute
   '/horary': typeof HoraryRoute
   '/raporlar': typeof RaporlarRoute
@@ -102,6 +111,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/bizden-ne-olur'
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
@@ -112,6 +122,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/bizden-ne-olur'
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
@@ -123,6 +134,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/bizden-ne-olur'
     | '/dogum-haritasi'
     | '/horary'
     | '/raporlar'
@@ -135,6 +147,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AuthRoute: typeof AuthRoute
+  BizdenNeOlurRoute: typeof BizdenNeOlurRoute
   DogumHaritasiRoute: typeof DogumHaritasiRoute
   HoraryRoute: typeof HoraryRoute
   RaporlarRoute: typeof RaporlarRoute
@@ -163,6 +176,13 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bizden-ne-olur': {
+      id: '/bizden-ne-olur'
+      path: '/bizden-ne-olur'
+      fullPath: '/bizden-ne-olur'
+      preLoaderRoute: typeof BizdenNeOlurRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dogum-haritasi': {
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AuthRoute: AuthRoute,
+  BizdenNeOlurRoute: BizdenNeOlurRoute,
   DogumHaritasiRoute: DogumHaritasiRoute,
   HoraryRoute: HoraryRoute,
   RaporlarRoute: RaporlarRoute,
